@@ -23,12 +23,43 @@ Enter the code for admin.py and models.py
 Execute Django admin and create details for 10 books
 
 ## PROGRAM
+admin.py
+```
+from django.contrib import admin
+from .models import book,bookadmin
+admin.site.register(book,bookadmin)
+```
+models.py
+```
+from django.db import models
+from django.contrib import admin
+class book(models.Model):
+    Book_name=models.CharField(max_length=100)
+    Author=models.CharField(max_length=100)
+    Co_author=models.CharField(max_length=100)
+    Book_code=models.IntegerField()
+    Publisher=models.CharField(max_length=100)
+    MRP=models.IntegerField()
+class bookadmin(admin.ModelAdmin):
+    list_display=("Book_name","Author","Co_author","Book_code","Publisher","MRP")
+```
+urls.pr
+```
+from django.contrib import admin
+from django.urls import path
 
-
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+```
 
 ## OUTPUT
+![image](https://github.com/user-attachments/assets/e5dfaf72-cb5a-42ca-a526-5c37bf82f095)
+![image](https://github.com/user-attachments/assets/50b42b26-69e5-41b9-80b6-d384e74c3da5)
+![image](https://github.com/user-attachments/assets/b910c047-3a16-4c5f-91ba-2b5c4e9cd155)
 
-Include the screenshot of your admin page.
+
+
 
 
 ## RESULT
